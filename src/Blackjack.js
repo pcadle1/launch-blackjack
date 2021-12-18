@@ -31,6 +31,15 @@ class Blackjack {
             return `Stand!`
         }
     }
+
+    dealerPlays(){
+        console.log(`Dealer's Turn!`)
+        console.log(this.dealer.displayHand())
+        while (this.dealer.getHandScore() < 17){
+            this.dealer.addCard(this.gameDeck.deal())
+        } 
+        console.log(`Dealer's score: ${this.dealer.getHandScore()}`)
+    }
 }
 
 export default Blackjack
