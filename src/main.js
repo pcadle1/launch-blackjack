@@ -15,4 +15,5 @@ while(game.player.getHandScore() <= 21){
     }
 }
 console.log(`Your total was: ${game.player.getHandScore()}`)
+game.decideWinner()
 

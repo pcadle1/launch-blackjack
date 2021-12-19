@@ -9,9 +9,6 @@ class Blackjack {
         this.gameDeck = new Deck()
     }
 
-    playGame(){
-    }
-
     dealFirstTwo(){
         this.player.addCard(this.gameDeck.deal())
         this.player.addCard(this.gameDeck.deal())
@@ -34,11 +31,23 @@ class Blackjack {
 
     dealerPlays(){
         console.log(`Dealer's Turn!`)
-        console.log(this.dealer.displayHand())
         while (this.dealer.getHandScore() < 17){
             this.dealer.addCard(this.gameDeck.deal())
         } 
+        this.dealer.displayHand()
         console.log(`Dealer's score: ${this.dealer.getHandScore()}`)
+    }
+
+    decideWinner(){
+        if (this.player.getHandScore() <= 21 && this.player.getHandScore() > this.dealer.getHandScore()){
+            console.log(`You win!!!!`)
+        }else if (this.player.getHandScore() < 21 && this.dealer.getHandScore() <= 21 && this.dealer.getHandScore() > this.player.getHandScore()){
+            console.log(`Dealer Wins!!`)
+        }else if (this.player.getHandScore() === this.dealer.getHandScore()){
+            console.log(`Tie!!!!`)
+        }else if (this.dealer.getHandScore() > 21){
+            console.log(`Dealer busted! You win!`)
+        }
     }
 }
 
